@@ -1,0 +1,10 @@
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\bin\Debug\IsleOfToxinXI.exe.config
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\bin\Debug\IsleOfToxinXI.exe
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\bin\Debug\IsleOfToxinXI.pdb
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\obj\Debug\IsleOfToxinXI.csprojAssemblyReference.cache
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\obj\Debug\IsleOfToxinXI.Properties.Resources.resources
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\obj\Debug\IsleOfToxinXI.csproj.GenerateResource.cache
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\obj\Debug\IsleOfToxinXI.csproj.CoreCompileInputs.cache
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\obj\Debug\IsleOfToxinXI.exe
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\obj\Debug\IsleOfToxinXI.pdb
+C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\obj\Debug\IsleOfToxinXI.Form1.resources
