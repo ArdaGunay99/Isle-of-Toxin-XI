@@ -7,10 +7,20 @@
       <e p="IsleOfToxinXI" t="IncludeRecursive">
         <e p="App.config" t="Include" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Bird.cs" t="Include" />
+        <e p="Character.cs" t="Include" />
+        <e p="Crazy.cs" t="Include" />
+        <e p="Creature.cs" t="Include" />
+        <e p="Feline.cs" t="Include" />
         <e p="Form1.cs" t="Include" />
         <e p="Form1.Designer.cs" t="Include" />
         <e p="Form1.resx" t="Include" />
+        <e p="Inventory.cs" t="Include" />
+        <e p="IPrint.cs" t="Include" />
         <e p="IsleOfToxinXI.csproj" t="IncludeRecursive" />
+        <e p="Item.cs" t="Include" />
+        <e p="Map.cs" t="Include" />
+        <e p="NPC.cs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">

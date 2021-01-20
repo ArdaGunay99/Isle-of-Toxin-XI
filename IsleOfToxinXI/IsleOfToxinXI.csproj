@@ -46,12 +46,22 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Bird.cs" />
+        <Compile Include="Character.cs" />
+        <Compile Include="Crazy.cs" />
+        <Compile Include="Creature.cs" />
+        <Compile Include="Feline.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>
         <Compile Include="Form1.Designer.cs">
             <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
+        <Compile Include="Inventory.cs" />
+        <Compile Include="IPrint.cs" />
+        <Compile Include="Item.cs" />
+        <Compile Include="Map.cs" />
+        <Compile Include="NPC.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <EmbeddedResource Include="Form1.resx">
