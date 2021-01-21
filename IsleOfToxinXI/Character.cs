@@ -10,9 +10,19 @@ namespace IsleOfToxinXI
         private Inventory charInventory;
         private double charDamage = 10;
         private Form1 _form1 = (Form1) Application.OpenForms["Form1"];
+        private static Character _char = new Character();//Singleton
         
-        public Character(){
+        private Character(){
             charInventory = new Inventory();
+        }
+
+        private void resetChar()
+        {
+            _char = new Character();
+        }
+        public static Character getInstance()
+        {
+            return _char;
         }
 
         public double getCharDamage() {
@@ -53,6 +63,7 @@ namespace IsleOfToxinXI
         public string addToCharInventory(Item item){
             charInventory.addItem(item);
             setCharDamage(getCharDamage()+item.ItemDamage);
+            _form1.AddItemToInventory(item);
             return">"+item.ItemName+" added to inventory.";
         }
         public string removeFromCharInventory(Item item){
@@ -64,6 +75,7 @@ namespace IsleOfToxinXI
             
             while(true)
             {
+                
                 _form1.AddLine(">you took " + (newCreature.CalculateTotalDamage() / 2) + " damage");
                 player.setHealth(player.getHealth() - (newCreature.CalculateTotalDamage() / 2));
                 _form1.SetHealthBar((int)player.getHealth());
@@ -72,18 +84,7 @@ namespace IsleOfToxinXI
                 newCreature.SetCreatureHealth(newCreature.GetCreatureDamage() - player.getCharDamage());
                 
                 if(player.getHealth() <=0){
-                    _form1.AddLine(">You are dead. Your scores:");
-                    _form1.AddLine(player.printInfo());
-                    _form1.AddLine("Restarting from the Start Point...");
-                    Map newMap = new Map();
-                    Character player1 = new Character();
-                    _form1.AddLine(">Character info: ");
-                    _form1.AddLine(player1.printInfo());
-
-
-                    _form1.AddLine("You Jump out of your Plane Just Above the Toxic Island.");
-
-                    //newMap.StartPoint(player1);
+                   playerDead();
                     break;
                 }
                 if (newCreature.GetCreatureHealth() <= 0) {
@@ -109,6 +110,7 @@ namespace IsleOfToxinXI
                 }
 
             }
+            _form1.ChangeCurrentScores();
 
         }
 
@@ -117,18 +119,7 @@ namespace IsleOfToxinXI
             _form1.AddLine(">by escaping the fight you took " + newCreature.CalculateTotalDamage() + " damage");
             _form1.SetHealthBar((int)player.getHealth());
             if(player.getHealth() <=0){
-                _form1.AddLine(">You are dead. Your scores:");
-                _form1.AddLine(player.printInfo());
-                _form1. AddLine(">Restarting from the Start Point...");
-                Map newMap = new Map();
-                Character player1 = new Character();
-                _form1.AddLine(">Character info: ");
-                _form1.AddLine(player1.printInfo());
-
-
-                _form1.AddLine(">You Jump out of your Plane Just Above the Toxic Island.");
-
-                //newMap.StartPoint(player1);
+               playerDead();
                 return;
             }
             
@@ -147,6 +138,7 @@ namespace IsleOfToxinXI
             }
             _form1.AddLine(">Character info after escape: ");
             player.printInfo();
+            _form1.ChangeCurrentScores();
         }
        
         public string printInfo()
@@ -155,6 +147,17 @@ namespace IsleOfToxinXI
                  ">Character damage: " + charDamage + "\r\n" +
                  ">information amount: " + infoGathered + "\r\n" +
                  ">sample amount: " + sampleCollected;
+        }
+
+        public void playerDead()
+        {
+            if(this.getHealth() <=0){
+                _form1.AddLine(">You are dead. Your scores:");
+                _form1.AddLine(this.printInfo());
+                _form1.AddLine("Restarting from the Start Point...");
+                resetChar();
+                _form1.Start();
+            }
         }
         
     }

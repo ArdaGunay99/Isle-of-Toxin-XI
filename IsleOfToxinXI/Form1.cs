@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -17,12 +18,15 @@ namespace IsleOfToxinXI
         private delegate void StringDelegate(string text);
         private delegate void BoolDelegate(bool value);
         private delegate void IntDelegate(int value);
+        private delegate void ItemDelegate(Item ıtem);
         private Character _character;
         private Map _map;
         public bool B1Clicked = false;
         public bool B2Clicked = false;
         public bool B3Clicked = false;
         public static EventWaitHandle Wait = new EventWaitHandle(false, EventResetMode.AutoReset);
+        public static int HighestInfo = 0;
+        public static int HighestSamp = 0;
         public Form1()
         {
             InitializeComponent();
@@ -37,7 +41,7 @@ namespace IsleOfToxinXI
             }
             else
             {
-                textBox1.Text = string.Concat(textBox1.Text, "\r\n" + text);
+                textBox1.AppendText("\r\n"+text);
             }
         }
         public void AddLine(string newText)
@@ -123,6 +127,7 @@ namespace IsleOfToxinXI
             else
             {
                 button3.Enabled = false;
+                button3.Visible = false;
             }
         }
         public void DisableB3()
@@ -177,6 +182,7 @@ namespace IsleOfToxinXI
             else
             {
                 button3.Enabled = true;
+                button3.Visible = true;
             }
         }
         
@@ -262,10 +268,10 @@ namespace IsleOfToxinXI
         public void Start()
         { 
             DisableButtons();
-           _character = new Character();
+           _character = Character.getInstance();
            SetHealthBar((int)_character.getHealth());
            ClearText();
-           _map = new Map();
+           _map = Map.getInstance();
            AddLine(">Choose:");
            ChangeB1Text("Start");
            ChangeB2Text("Exit");
@@ -275,34 +281,191 @@ namespace IsleOfToxinXI
            Debug.WriteLine("Wait ended in Start");
            if (B1Clicked)
            {
-               AddLine(">A secret organization called “The Syndicate” who have \r\n"
-                       + ">been making weapons and selling to the highest bidder has created a new bio-weapon \r\n"
-                       + ">called “Toxin XI” and made a test run on an uncharted island near Japan. Players \r\n"
-                       + ">will have the role of an agent of The Syndicate who have been sent to the island \r\n"
-                       + ">to gather information and samples from the animals and plants which were affected \r\n"
-                       + ">from the Toxin XI.Due to the circumstances you were only able to have a lighter, \r\n"
-                       + ">a pocket knife and a roll of duct tape with you when the player came to the island \r\n"
-                       + ">so they will have to search for items and craft tools to survive . As the game moves \r\n"
-                       + ">on, players will run into creatures which are living beings that were affected by \r\n"
-                       + ">the bio-weapon and were mutated into abominations. Some of them are wild and will \r\n"
-                       + ">attack you on sight whereas some of them are peaceful. It will be the player’s \r\n"
-                       + ">choice to kill the creatures or leave them unharmed. Depending on their choice, \r\n"
-                       + ">the amount of info and samples they gather will change.");
-               AddLine(">Character info: ");
-               AddLine(_character.printInfo());
-               AddLine(">You Jump out of your Plane Just Above the Isle.");
+               AddLine(">A secret organization called “The Syndicate” who have ");Thread.Sleep(500);
+               AddLine(">been making weapons and selling to the highest bidder has created a new bio-weapon ");Thread.Sleep(500);
+               AddLine(">called “Toxin XI” and made a test run on an uncharted island near Japan. Players ");Thread.Sleep(500);
+               AddLine(">will have the role of an agent of The Syndicate who have been sent to the island ");Thread.Sleep(500);
+               AddLine(">to gather information and samples from the animals and plants which were affected ");Thread.Sleep(500);
+               AddLine(">from the Toxin XI.Due to the circumstances you were only able to have a lighter, ");Thread.Sleep(500);
+               AddLine(">a pocket knife and a roll of duct tape with you when the player came to the island ");Thread.Sleep(500);
+               AddLine(">so they will have to search for items and craft tools to survive . As the game moves ");Thread.Sleep(500);
+               AddLine(">on, players will run into creatures which are living beings that were affected by ");Thread.Sleep(500);
+               AddLine(">the bio-weapon and were mutated into abominations. Some of them are wild and will ");Thread.Sleep(500);
+               AddLine(">attack you on sight whereas some of them are peaceful. It will be the player’s ");Thread.Sleep(500);
+               AddLine(">choice to kill the creatures or leave them unharmed. Depending on their choice, ");Thread.Sleep(500);
+               AddLine(">the amount of info and samples they gather will change.");Thread.Sleep(500);
+               AddLine(">Character info: ");Thread.Sleep(500);
+               AddLine(_character.printInfo());Thread.Sleep(500);
+               AddLine(">You Jump out of your Plane Just Above the Isle.");Thread.Sleep(500);
                _map.StartPoint(_character);
            }
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            ReadFile();
             var thread = new Thread(Start);
             thread.Start();
             Debug.WriteLine("Button 4 click");
+            button1.Visible = true;
+            button2.Visible = true;
+            button3.Visible = true;
             button4.Enabled = false;
             button4.Visible = false;
             
         }
+
+        private void SafeChangeHighest(string text)
+        {
+            if (highestInfo.InvokeRequired)
+            {
+                text = "Information: " + _character.getInfoGathered();
+                var del = new StringDelegate(SafeChangeCurrent);
+                highestInfo.Invoke(del, new object[] {text});
+            }
+            else
+            {
+                highestInfo.Text = "Information: " + _character.getInfoGathered();
+            }
+            
+            if (highestSamp.InvokeRequired)
+            {
+                text = "Samples: " + _character.getInfoGathered();
+                var del = new StringDelegate(SafeChangeCurrent);
+                highestSamp.Invoke(del, new object[] {text});
+            }
+            else
+            {
+                highestSamp.Text = "Samples: " + _character.getSampleCollected();
+            }
+            
+        }
+
+        public void ChangeHighestScores()
+        {
+           SafeChangeHighest("");
+           Interlocked.Exchange(ref HighestInfo, _character.getInfoGathered());
+           Interlocked.Exchange(ref HighestSamp, _character.getSampleCollected());
+        }
+
+        private void SafeChangeCurrent(string text)
+        {
+            if (currInfo.InvokeRequired)
+            {
+                text = "Information: " + _character.getInfoGathered();
+                var del = new StringDelegate(SafeChangeCurrent);
+                currInfo.Invoke(del, new object[] {text});
+            }
+            else
+            {
+                currInfo.Text = "Information: " + _character.getInfoGathered();
+                if (_character.getInfoGathered() > HighestInfo)
+                {
+                    ChangeHighestScores();
+                }
+            }
+            
+            if (currSamp.InvokeRequired)
+            {
+                text = "Samples: " + _character.getInfoGathered();
+                var del = new StringDelegate(SafeChangeCurrent);
+                currSamp.Invoke(del, new object[] {text});
+            }
+            else
+            {
+                currSamp.Text = "Samples: " + _character.getSampleCollected();
+                if (_character.getSampleCollected() > HighestSamp)
+                {
+                    ChangeHighestScores();
+                }
+            }
+            
+        }
+        public void ChangeCurrentScores()
+        {
+            SafeChangeCurrent("");
+        }
+
+        public int ExtractDigits(string text)
+        {
+            var digit = "";
+
+            foreach (var c in text)
+            {
+                if (char.IsDigit(c))
+                    digit += c;
+            }
+
+            return int.Parse(digit);
+        }
+
+        public void WriteToFile()
+        {
+            const string fileName = @"C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\Scores.txt";
+
+            if (File.Exists(fileName))    
+            {    
+                File.Delete(fileName);    
+            } 
+            using (var stream = File.CreateText(fileName))
+            {
+                stream.WriteLine("Information: "+HighestInfo);
+                stream.WriteLine("Samples: "+HighestSamp);
+            }
+            
+        }
+
+        public void ReadFile()
+        {
+            const string fileName = @"C:\Users\Arda\RiderProjects\IsleOfToxinXI\IsleOfToxinXI\Scores.txt";
+            using (var reader = File.OpenText(fileName))
+            {
+                var line = "";
+                var lineCount = 0;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    if (lineCount == 0)
+                    {
+                        HighestInfo = ExtractDigits(line);
+                        highestInfo.Text ="Information: "+HighestInfo.ToString();
+                    }
+                    else
+                    {
+                        HighestSamp = ExtractDigits(line);
+                        highestSamp.Text ="Samples: "+HighestSamp.ToString();
+                    }
+
+                    lineCount++;
+                }
+            }
+                
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            AddLine(">Saving scores..");
+            AddLine(">Exiting game..");
+            //Thread.Sleep(2000);
+            WriteToFile();
+        }
+
+        private void SafeAddItem(Item item)
+        {
+            if (checkedListBox1.InvokeRequired)
+            {
+                var del = new ItemDelegate(SafeAddItem);
+                checkedListBox1.Invoke(del, new object[] {item});
+            }
+            else
+            {
+                checkedListBox1.Items.Add(item.ItemName + "->" + item.ItemDamage + " dps.");
+            }
+        }
+        public void AddItemToInventory(Item item)
+        {
+            SafeAddItem(item);
+        }
+        
     }
 }
