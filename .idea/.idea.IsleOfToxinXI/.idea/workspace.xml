@@ -13,17 +13,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fe4da4a-211e-4c18-9303-239754633934" name="Default Changelist" comment="MultiThreading Fixed">
+    <list default="true" id="5fe4da4a-211e-4c18-9303-239754633934" name="Default Changelist" comment="All Mechanics are Done">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IsleOfToxinXI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IsleOfToxinXI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/Character.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/Character.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/Form1.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/Form1.Designer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/Form1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/Inventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/Inventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/Map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/bin/Debug/IsleOfToxinXI.exe" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/bin/Debug/IsleOfToxinXI.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/bin/Debug/IsleOfToxinXI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/bin/Debug/IsleOfToxinXI.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/obj/Debug/IsleOfToxinXI.exe" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/obj/Debug/IsleOfToxinXI.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IsleOfToxinXI/obj/Debug/IsleOfToxinXI.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/IsleOfToxinXI/obj/Debug/IsleOfToxinXI.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +92,8 @@
       <workItem from="1608119768968" duration="2226000" />
       <workItem from="1608127650547" duration="1535000" />
       <workItem from="1611141370518" duration="31942000" />
-      <workItem from="1611210675755" duration="27692000" />
+      <workItem from="1611210675755" duration="28415000" />
+      <workItem from="1611314186443" duration="1492000" />
     </task>
     <task id="LOCAL-00001" summary="initial version.">
       <created>1608127687918</created>
@@ -117,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611185856309</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="All Mechanics are Done">
+      <created>1611267801930</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1611267801930</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,25 +140,26 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="initial version." />
     <MESSAGE value="MultiThreading Fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="MultiThreading Fixed" />
+    <MESSAGE value="All Mechanics are Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="All Mechanics are Done" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="916" height="296" key="GridCell.Tab.0.bottom" timestamp="1611266677079">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom" timestamp="1611315242257">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="916" height="296" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1611266677079" />
-    <state width="916" height="296" key="GridCell.Tab.0.center" timestamp="1611266677079">
+    <state width="1877" height="293" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1611315242257" />
+    <state width="1877" height="293" key="GridCell.Tab.0.center" timestamp="1611315242257">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="916" height="296" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1611266677079" />
-    <state width="916" height="296" key="GridCell.Tab.0.left" timestamp="1611266677078">
+    <state width="1877" height="293" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1611315242257" />
+    <state width="1877" height="293" key="GridCell.Tab.0.left" timestamp="1611315242256">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="916" height="296" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1611266677078" />
-    <state width="916" height="296" key="GridCell.Tab.0.right" timestamp="1611266677079">
+    <state width="1877" height="293" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1611315242256" />
+    <state width="1877" height="293" key="GridCell.Tab.0.right" timestamp="1611315242257">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="916" height="296" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1611266677079" />
+    <state width="1877" height="293" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1611315242257" />
     <state width="1877" height="381" key="GridCell.Tab.1.bottom" timestamp="1611185880565">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -224,10 +224,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="92" y="92" width="1736" height="866" key="VCS.FileHistoryDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1611152061643" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1611185864136">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1611267804428">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1611185864136" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1611267804428" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1611258222184">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
